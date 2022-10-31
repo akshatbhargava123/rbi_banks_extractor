@@ -5,7 +5,7 @@ const axios = Axios.create();
 
 const RBI_WEBSITE = 'https://www.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=2070';
 
-async function fetchIfUpdated() {
+async function fetchBankInfo() {
     // fetch and parse HTML
     const { data: html } = await axios.get(RBI_WEBSITE, { responseType: 'text' });
     const parsed = parse(html);
@@ -37,4 +37,6 @@ async function fetchIfUpdated() {
     return json;
 }
 
-fetchIfUpdated();
+module.exports = {
+    fetchBankInfo,
+};
